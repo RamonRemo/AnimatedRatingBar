@@ -135,16 +135,16 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Text(
-            '$rating',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 40,
-            ),
-          ),
-        )
+        // Padding(
+        //   padding: const EdgeInsets.all(24.0),
+        //   child: Text(
+        //     '$rating',
+        //     style: TextStyle(
+        //       color: Colors.white,
+        //       fontSize: 40,
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
