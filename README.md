@@ -40,12 +40,12 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
-![DEMO1](example/assets/rotate.gif) 
+![DEMO1](https://github.com/RamonRemo/AnimatedRatingBar/blob/main/example/assets/rotate.gif) 
 
 
 2. You can use shake:
 
-![DEMO2](example/assets/shake.gif) 
+![DEMO2](https://github.com/RamonRemo/AnimatedRatingBar/blob/main/example/assets/shake.gif) 
 
 3. Or bounce:
 
