@@ -17,7 +17,7 @@ class DefaultExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedRatingBar(
-              // animationItensity: 4,
+              animationItensity: 4,
               animationType: ARBAnimationType.shake,
               rowHeight: 50,
               onRatingChanged: (value) {
