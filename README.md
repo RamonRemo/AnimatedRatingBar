@@ -39,7 +39,8 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
-    ![](example/assets/shake.gif) 
+
+![](example/assets/shake.gif) 
 
 
 2. Then pass the key to the WidgetToImage selecting the constructor of type that you want
