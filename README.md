@@ -25,7 +25,7 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 ```dart
     AnimatedRatingBar(
-        animationType: ARBAnimationType.shake,
+        animationType: ARBAnimationType.rotate,
         rowHeight: 50,
         emptyWidget: Icon(
           Icons.star_border_rounded,
@@ -39,19 +39,17 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
+![](example/assets/rotate.gif) 
+
+
+2. You can use shake
 
 ![](example/assets/shake.gif) 
 
+3. Or bounce
 
-2. You can use the other animations and change their intensity
+![](example/assets/bounce.gif)
 
-![](example/assets/bounce.gif) ![](example/assets/rotate.gif)
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
 
 ## Additional information
 
