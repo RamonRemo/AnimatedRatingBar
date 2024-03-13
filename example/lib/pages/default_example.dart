@@ -9,16 +9,16 @@ class DefaultExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             AnimatedRatingBar(
               // animationItensity: 4,
-              animationType: ARBAnimationType.rotate,
+              animationType: ARBAnimationType.shake,
               rowHeight: 50,
               emptyWidget: Icon(
                 Icons.star_border_rounded,
