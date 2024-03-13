@@ -43,15 +43,9 @@ A simple animated rating bar to help you implement a rating system in your app.
 ![](example/assets/shake.gif) 
 
 
-2. Then pass the key to the WidgetToImage selecting the constructor of type that you want
+2. You can use the other animations and change their intensity
 
-```dart
-final dartUiImage = await WidgetToImage.asDartUiImage(key);
-final byte = await WidgetToImage.asByteData(key);
-final uint = await WidgetToImage.asUint8List(key);
-final image = await WidgetToImage.asImage(key);
-```
-
+![](example/assets/bounce.gif) ![](example/assets/rotate.gif)
 TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
