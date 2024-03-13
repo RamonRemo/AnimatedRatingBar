@@ -29,7 +29,7 @@ class AnimatedRatingBar extends StatefulWidget {
   final ARBAnimationType animationType;
 
   /// Intensity of the animation.
-  /// 
+  ///
   /// default is 2.
   final double animationItensity;
 
@@ -135,16 +135,16 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Text(
-            '$rating',
-            style: TextStyle(
-              color: Colors.yellow,
-              fontSize: 40,
-            ),
-          ),
-        )
+        // Padding(
+        //   padding: const EdgeInsets.all(24.0),
+        //   child: Text(
+        //     '$rating',
+        //     style: TextStyle(
+        //       color: Colors.yellow,
+        //       fontSize: 40,
+        //     ),
+        //   ),
+        // )
       ],
     );
   }

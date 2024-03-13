@@ -15,9 +15,10 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 ## Features
 
- - Change between 5 types of animation(bounce, shake, bounceDiagonally, rotate and none)
- - Change the intensity of the animations
- - Use any widget as rating indicator
+ - Change between 5 types of animation(bounce, shake, bounceDiagonally, rotate and none).
+ - Change the intensity of the animations.
+ - Use any widget as rating indicator.
+ - Rating 1 to 5.
 
 ## Usage
 
@@ -25,7 +26,7 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 ```dart
     AnimatedRatingBar(
-        animationType: ARBAnimationType.shake,
+        animationType: ARBAnimationType.rotate,
         rowHeight: 50,
         emptyWidget: Icon(
           Icons.star_border_rounded,
@@ -39,30 +40,41 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
-    ![](example/assets/shake.gif) 
+![](example/assets/rotate.gif) 
 
 
-2. Then pass the key to the WidgetToImage selecting the constructor of type that you want
+2. You can use shake:
 
-```dart
-final dartUiImage = await WidgetToImage.asDartUiImage(key);
-final byte = await WidgetToImage.asByteData(key);
-final uint = await WidgetToImage.asUint8List(key);
-final image = await WidgetToImage.asImage(key);
-```
+![](example/assets/shake.gif) 
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+3. Or bounce:
+
+![](example/assets/bounce.gif)
+
+4. There are others parameters you can change to personalize your ratingbar like animation intensity, rating widget. You can recover the rating value using the callback method
 
 ```dart
-const like = 'sample';
+    AnimatedRatingBar(
+        animationType: ARBAnimationType.rotate,
+        rowHeight: 50,
+        emptyWidget: Icon(
+          Icons.star_border_rounded,
+          size: 48,
+          color: Colors.white,
+        ),
+        fullWidget: Icon(
+          Icons.star_rounded,
+          size: 48,
+          color: Colors.white,
+        ),
+        //here
+        onRatingChanged: (value) {
+            int rating = value;
+        },
+    ),
 ```
+
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-
-todo
-remover text
+Feel free to do pull requests or ask for changes on issues(on gitHub). There is a simple example on the github.

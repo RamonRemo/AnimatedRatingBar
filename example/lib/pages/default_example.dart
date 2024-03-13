@@ -9,7 +9,7 @@ class DefaultExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.all(24.0),
@@ -20,6 +20,9 @@ class DefaultExample extends StatelessWidget {
               // animationItensity: 4,
               animationType: ARBAnimationType.shake,
               rowHeight: 50,
+              onRatingChanged: (value) {
+                int rating = value;
+              },
               emptyWidget: Icon(
                 Icons.star_border_rounded,
                 size: 48,
