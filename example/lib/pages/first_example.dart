@@ -1,5 +1,5 @@
-import 'package:animated_rating_bar/animated_rating_bar.dart';
-import 'package:animated_rating_bar/utils/arb_type.dart';
+import 'package:simple_animated_rating_bar/animated_rating_bar.dart';
+import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 import 'package:flutter/material.dart';
 
 class FirstExample extends StatelessWidget {

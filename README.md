@@ -40,16 +40,16 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
-![](example/assets/rotate.gif) 
+![DEMO1](example/assets/rotate.gif) 
 
 
 2. You can use shake:
 
-![](example/assets/shake.gif) 
+![DEMO2](example/assets/shake.gif) 
 
 3. Or bounce:
 
-![](example/assets/bounce.gif)
+![DEMO3](https://github.com/RamonRemo/AnimatedRatingBar/blob/main/example/assets/bounce.gif)
 
 4. There are others parameters you can change to personalize your ratingbar like animation intensity, rating widget. You can recover the rating value using the callback method
 

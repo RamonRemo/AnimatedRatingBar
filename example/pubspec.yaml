@@ -9,7 +9,7 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  animated_rating_bar:
+  simple_animated_rating_bar:
     path: ../
   flutter:
     sdk: flutter

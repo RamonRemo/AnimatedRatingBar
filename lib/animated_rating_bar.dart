@@ -1,10 +1,10 @@
-library animated_rating_bar;
+library simple_animated_rating_bar;
 
 // ignore_for_file: always_put_control_body_on_new_line
 
-import 'package:animated_rating_bar/src/custom_track_shape.dart';
-import 'package:animated_rating_bar/src/rating_object.dart';
-import 'package:animated_rating_bar/utils/arb_type.dart';
+import 'package:simple_animated_rating_bar/src/custom_track_shape.dart';
+import 'package:simple_animated_rating_bar/src/rating_object.dart';
+import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRatingBar extends StatefulWidget {
