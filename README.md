@@ -49,7 +49,7 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 3. Or bounce:
 
-![DEMO3](https://github.com/RamonRemo/AnimatedRatingBar/blob/main/example/assets/bounce.gif)
+![DEMO3](example/assets/bounce.gif)
 
 4. There are others parameters you can change to personalize your ratingbar like animation intensity, rating widget. You can recover the rating value using the callback method
 
