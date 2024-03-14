@@ -30,8 +30,12 @@ class AnimatedRatingBar extends StatefulWidget {
 
   /// Intensity of the animation.
   ///
-  /// default is 2.
+  /// Default is 2.
   final double animationItensity;
+
+  /// Make the ratings to be animated one at a time.
+  /// Default is true;
+  final bool cascadeAnimation;
 
   const AnimatedRatingBar({
     super.key,
@@ -41,6 +45,7 @@ class AnimatedRatingBar extends StatefulWidget {
     required this.rowHeight,
     this.animationType = ARBAnimationType.bounce,
     this.animationItensity = 2,
+    this.cascadeAnimation = true,
   });
 
   @override
@@ -118,6 +123,13 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
                           val = 0;
                         });
                       } else {
+                        if (!widget.cascadeAnimation) {
+                          setState(() {
+                            val = value;
+                            return;
+                          });
+                        }
+
                         for (double i = val;
                             isIncreasing ? i <= value : i >= value;
                             i += step) {
@@ -135,16 +147,16 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             ),
           ],
         ),
-        // Padding(
-        //   padding: const EdgeInsets.all(24.0),
-        //   child: Text(
-        //     '$rating',
-        //     style: TextStyle(
-        //       color: Colors.white,
-        //       fontSize: 40,
-        //     ),
-        //   ),
-        // )
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Text(
+            '$rating',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+            ),
+          ),
+        )
       ],
     );
   }

@@ -15,14 +15,16 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 ## Features
 
- - Change between 5 types of animation(bounce, shake, bounceDiagonally, rotate and none).
- - Change the intensity of the animations.
- - Use any widget as rating indicator.
- - Rating 1 to 5.
+* Change between 5 types of animation (bounce, shake, bounceDiagonally, rotate and none).
+* Adjust the intensity of the animations.
+* Use any widget as rating indicator.
+* Supports ratings from 1 to 5.
+* Select a rating by swiping or tapping.
+* Includes a toggleable Cascade-Animation.
 
 ## Usage
 
-1. Declare a AnimatedRatingBar with the desired parameters, the rowHeight parameter should have the same height that you rating widget has.
+1. Declare an `AnimatedRatingBar` with the desired parameters. Ensure the `rowHeight` parameter matches the height of your rating widget.
 
 ```dart
     AnimatedRatingBar(
@@ -43,15 +45,15 @@ A simple animated rating bar to help you implement a rating system in your app.
 ![DEMO1](example/assets/rotate.gif) 
 
 
-2. You can use shake:
+2. Use the shake animation:
 
 ![DEMO2](example/assets/shake.gif) 
 
-3. Or bounce:
+3. Or the bounce animation:
 
 ![DEMO3](example/assets/bounce.gif)
 
-4. There are others parameters you can change to personalize your ratingbar like animation intensity, rating widget. You can recover the rating value using the callback method
+4. Explore other parameters to customize your rating bar, including animation intensity and rating widget selection. You can retrieve the current rating value using the onRatingChanged callback method.
 
 ```dart
     AnimatedRatingBar(
@@ -77,4 +79,4 @@ A simple animated rating bar to help you implement a rating system in your app.
 
 ## Additional information
 
-Feel free to do pull requests or ask for changes on issues(on gitHub). There is a simple example on the github.
+Feel free to submit pull requests or suggest changes on issues (on GitHub). A simple example is available on the GitHub repository.
