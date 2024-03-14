@@ -5,3 +5,8 @@
 ## 0.0.6
 
 * README added
+
+## 0.0.7
+
+* Cascade animation added
+* README updated
