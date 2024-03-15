@@ -10,3 +10,8 @@
 
 * Cascade animation added
 * README updated
+
+## 0.0.8
+
+* mainAxisAlignment add
+* initialValue added

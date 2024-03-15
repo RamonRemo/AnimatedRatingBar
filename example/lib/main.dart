@@ -1,4 +1,3 @@
-import 'package:simple_animated_rating_bar/animated_rating_bar.dart';
 import 'package:example/pages/default_example.dart';
 import 'package:example/pages/first_example.dart';
 import 'package:example/pages/steven_example.dart';
