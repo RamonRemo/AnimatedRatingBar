@@ -1,11 +1,9 @@
-import 'package:example/pages/default_example.dart';
-import 'package:example/pages/first_example.dart';
 import 'package:example/pages/steven_example.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: MyApp(),
     ),
   );
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StevenUniverseExample();
+    return const StevenUniverseExample();
     // return DefaultExample();
   }
 }
