@@ -11,6 +11,8 @@ class RatingObject extends StatefulWidget {
     required this.fullWidget,
     required this.animationType,
     required this.animationItensity,
+    required this.callback,
+    required this.index,
   }) : super(key: key);
 
   final bool isSelected;
@@ -18,6 +20,8 @@ class RatingObject extends StatefulWidget {
   final Widget fullWidget;
   final ARBAnimationType animationType;
   final double animationItensity;
+  final Function(int) callback;
+  final int index;
 
   @override
   State<RatingObject> createState() => RatingObjectState();
@@ -52,37 +56,47 @@ class RatingObjectState extends State<RatingObject>
     _scale = _decideScaleIntensity();
     final sineValue = _decideShakeIntensity();
     final angle = _animate.value * widget.animationItensity / 2;
+    Widget? ratingObject;
 
     _onSelected();
 
     if (widget.animationType == ARBAnimationType.none) {
-      return widget.isSelected ? widget.fullWidget : widget.emptyWidget;
+      ratingObject = widget.isSelected ? widget.fullWidget : widget.emptyWidget;
     }
 
     if (widget.animationType == ARBAnimationType.shake) {
-      return Transform.translate(
+      ratingObject = Transform.translate(
         offset: Offset(sineValue * 4, 0),
         child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
       );
     }
 
     if (widget.animationType == ARBAnimationType.rotate) {
-      return Transform.rotate(
+      ratingObject = Transform.rotate(
         angle: angle,
         child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
       );
     }
 
     if (widget.animationType == ARBAnimationType.bounceDiagonally) {
-      return Transform(
+      ratingObject = Transform(
         transform: Matrix4.diagonal3Values(_scale, _scale, 1),
         child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
       );
     }
 
-    return Transform.scale(
-      scale: _scale,
-      child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
+    if (widget.animationType == ARBAnimationType.bounce) {
+      ratingObject = Transform.scale(
+        scale: _scale,
+        child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
+      );
+    }
+
+    return GestureDetector(
+      onTap: () {
+        widget.callback(widget.index + 1);
+      },
+      child: ratingObject,
     );
   }
 

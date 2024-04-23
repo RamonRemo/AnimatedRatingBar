@@ -2,7 +2,6 @@ library simple_animated_rating_bar;
 
 // ignore_for_file: always_put_control_body_on_new_line
 
-import 'package:simple_animated_rating_bar/src/custom_track_shape.dart';
 import 'package:simple_animated_rating_bar/src/rating_object.dart';
 import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,6 @@ class AnimatedRatingBar extends StatefulWidget {
   /// Callback to retrieve the rating value.
   final ValueChanged<int>? onRatingChanged;
 
-  /// Height of the swipe area, should match the height of your empty and full widgets.
-  final double rowHeight;
-
   /// Defines the type of the animation.
   ///
   /// Default is ARBAnimationType.bounce.
@@ -40,6 +36,9 @@ class AnimatedRatingBar extends StatefulWidget {
   /// Default is true.
   final bool cascadeAnimation;
 
+  /// How many rating objects will be
+  final int ratingLength;
+
   /// The initial rating value.
   ///
   /// Default is 0.
@@ -52,12 +51,12 @@ class AnimatedRatingBar extends StatefulWidget {
     this.onRatingChanged,
     required this.emptyWidget,
     required this.fullWidget,
-    required this.rowHeight,
     this.animationType = ARBAnimationType.bounce,
     this.animationItensity = 2,
     this.cascadeAnimation = true,
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.initialValue = 0,
+    this.ratingLength = 5,
   });
 
   @override
@@ -65,97 +64,51 @@ class AnimatedRatingBar extends StatefulWidget {
 }
 
 class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
-  late double selectedValue;
   late List<RatingObject> ratingList;
+  late int selectedValue = widget.initialValue > 5 ? 5 : widget.initialValue;
 
   @override
   void initState() {
-    if (widget.initialValue > 5) {
-      selectedValue = 100;
-    } else if (widget.initialValue < 0) {
-      selectedValue = 0;
-    } else {
-      selectedValue = widget.initialValue * 20 + 3.5;
-    }
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((final ex) => _updateRating());
   }
 
   @override
   Widget build(final BuildContext context) {
     ratingList = [];
 
-    for (var index = 0; index < 5; index++) {
+    for (var index = 0; index < widget.ratingLength; index++) {
       ratingList.add(
         RatingObject(
-          isSelected: selectedValue > index * 20 + 3.5,
+          isSelected: index <= selectedValue - 1,
           fullWidget: widget.fullWidget,
           emptyWidget: widget.emptyWidget,
           animationItensity: widget.animationItensity,
           animationType: widget.animationType,
+          index: index,
+          callback: (final rating) async {
+            final isIncreasing = selectedValue < rating;
+
+            for (var i = selectedValue;
+                isIncreasing ? i <= rating : i >= rating;
+                isIncreasing ? i++ : i--) {
+              await Future.delayed(const Duration(milliseconds: 50));
+
+              selectedValue = i;
+              setState(() {
+                _updateRating();
+              });
+            }
+          },
         ),
       );
     }
 
     return Column(
       children: [
-        Stack(
-          children: [
-            Row(
-              mainAxisAlignment: widget.mainAxisAlignment,
-              children: ratingList,
-            ),
-            Opacity(
-              opacity: 0,
-              child: SliderTheme(
-                data: SliderThemeData(
-                  trackHeight: widget.rowHeight,
-                  minThumbSeparation: 0,
-
-                  // rangeThumbShape: RangeSliderThumbShape(),
-                  thumbShape: const RoundSliderThumbShape(
-                    // enabledThumbRadius: widget.rowHeight / 4,
-                    enabledThumbRadius: 0.1,
-                    disabledThumbRadius: 0.1,
-                  ),
-                  trackShape: CustomTrackShape(widget.rowHeight),
-                ),
-                child: Slider(
-                    value: selectedValue,
-                    max: 100,
-                    onChanged: (final value) async {
-                      final bool isIncreasing = selectedValue < value;
-                      final step = isIncreasing ? 1.0 : -1.0;
-                      var isOneStar = rating == 1;
-
-                      if (isOneStar && value < 24) {
-                        setState(() {
-                          selectedValue = 0;
-                          ratingList = [];
-                        });
-                      } else {
-                        if (!widget.cascadeAnimation) {
-                          setState(() {
-                            selectedValue = value;
-                            return;
-                          });
-                        }
-
-                        for (double i = selectedValue;
-                            isIncreasing ? i <= value : i >= value;
-                            i += step) {
-                          await Future.delayed(
-                            const Duration(milliseconds: 1),
-                          );
-
-                          setState(() => selectedValue = i);
-                        }
-                      }
-
-                      _updateRating();
-                    }),
-              ),
-            ),
-          ],
+        Row(
+          mainAxisAlignment: widget.mainAxisAlignment,
+          children: ratingList,
         ),
         // Padding(
         //   padding: const EdgeInsets.all(24.0),
@@ -182,15 +135,5 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
     widget.onRatingChanged?.call(rating);
   }
 
-  int get rating {
-    int value = 0;
-
-    for (var item in ratingList) {
-      if (item.isSelected) {
-        value++;
-      }
-    }
-
-    return value;
-  }
+  int get rating => selectedValue;
 }

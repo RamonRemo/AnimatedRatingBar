@@ -19,7 +19,9 @@ class StevenUniverseExample extends StatelessWidget {
             AnimatedRatingBar(
               initialValue: 2,
               animationType: ARBAnimationType.rotate,
-              rowHeight: 50,
+              onRatingChanged: (value) {
+                print(value);
+              },
               emptyWidget: SizedBox(
                 height: 60,
                 width: 60,

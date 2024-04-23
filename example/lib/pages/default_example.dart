@@ -19,7 +19,6 @@ class DefaultExample extends StatelessWidget {
             AnimatedRatingBar(
               animationItensity: 4,
               animationType: ARBAnimationType.shake,
-              rowHeight: 50,
               onRatingChanged: (value) {
                 int rating = value;
               },

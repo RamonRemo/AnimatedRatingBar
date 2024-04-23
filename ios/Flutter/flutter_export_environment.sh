@@ -1,12 +1,12 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/opt/homebrew/Caskroom/flutter/3.7.11/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/ramon.ferreira/Documents/dev/animated_rating_bar"
+export "FLUTTER_ROOT=C:\Users\ramon\Documents\dev\flutter"
+export "FLUTTER_APPLICATION_PATH=C:\Users\ramon\Documents\dev\projects\AnimatedRatingBar"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
+export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=0.0.1"
-export "FLUTTER_BUILD_NUMBER=0.0.1"
+export "FLUTTER_BUILD_NAME=0.0.8"
+export "FLUTTER_BUILD_NUMBER=0.0.8"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"

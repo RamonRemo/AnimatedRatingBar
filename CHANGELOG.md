@@ -15,3 +15,10 @@
 
 * mainAxisAlignment add
 * initialValue added
+
+## 1.0.0
+
+* Slider function removed
+* rowheight parameter removed
+* ratingLength parameter added
+* bug on first ratingobject fixed
