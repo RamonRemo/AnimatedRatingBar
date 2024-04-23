@@ -92,9 +92,19 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             for (var i = selectedValue;
                 isIncreasing ? i <= rating : i >= rating;
                 isIncreasing ? i++ : i--) {
-              await Future.delayed(const Duration(milliseconds: 50));
+              if (widget.cascadeAnimation)
+                await Future.delayed(const Duration(milliseconds: 50));
 
               selectedValue = i;
+
+              if (widget.cascadeAnimation) {
+                setState(() {
+                  _updateRating();
+                });
+              }
+            }
+
+            if (!widget.cascadeAnimation) {
               setState(() {
                 _updateRating();
               });

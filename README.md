@@ -18,18 +18,17 @@ A simple animated rating bar to help you implement a rating system in your app.
 * Change between 5 types of animation (bounce, shake, bounceDiagonally, rotate and none).
 * Adjust the intensity of the animations.
 * Use any widget as rating indicator.
-* Supports ratings from 1 to 5.
-* Select a rating by swiping or tapping.
+* You choose how many rating objects will be.
+* Select a rating by tapping.
 * Includes a toggleable Cascade-Animation.
 
 ## Usage
 
-1. Declare an `AnimatedRatingBar` with the desired parameters. Ensure the `rowHeight` parameter matches the height of your rating widget.
+1. Declare an `AnimatedRatingBar` with the desired parameters.
 
 ```dart
     AnimatedRatingBar(
         animationType: ARBAnimationType.rotate,
-        rowHeight: 50,
         emptyWidget: Icon(
           Icons.star_border_rounded,
           size: 48,
@@ -58,7 +57,6 @@ A simple animated rating bar to help you implement a rating system in your app.
 ```dart
     AnimatedRatingBar(
         animationType: ARBAnimationType.rotate,
-        rowHeight: 50,
         emptyWidget: Icon(
           Icons.star_border_rounded,
           size: 48,

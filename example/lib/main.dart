@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
             ),
             ratingLength: 6,
             animationType: ARBAnimationType.rotate,
+            cascadeAnimation: true,
           )
         ],
       ),
