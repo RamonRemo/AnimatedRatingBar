@@ -22,3 +22,7 @@
 * rowheight parameter removed
 * ratingLength parameter added
 * bug on first ratingobject fixed
+
+## 1.0.1
+
+* fixed cascade
