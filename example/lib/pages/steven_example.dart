@@ -15,7 +15,8 @@ class StevenUniverseExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            animationType: ARBAnimationType.rotate,
+            // ratingLength: 3,
+            animationType: ARBAnimationType.shake,
             onRatingChanged: (value) {
               // print(value);
             },

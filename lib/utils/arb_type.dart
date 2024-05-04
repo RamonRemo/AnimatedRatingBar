@@ -1,7 +1,9 @@
 enum ARBAnimationType {
   shake,
   bounce,
-  bounceDiagonally,
   rotate,
+  jump,
+  diagonallyUp,
+  diagonallyDown,
   none,
 }

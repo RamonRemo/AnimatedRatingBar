@@ -36,7 +36,9 @@ class AnimatedRatingBar extends StatefulWidget {
   /// Default is true.
   final bool cascadeAnimation;
 
-  /// How many rating objects will be
+  /// How many rating objects.
+  ///
+  /// You may have to change [mainAxisAlignment] property.
   final int ratingLength;
 
   /// The initial rating value.
@@ -64,7 +66,7 @@ class AnimatedRatingBar extends StatefulWidget {
 }
 
 class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
-  late List<RatingObject> ratingList;
+  late List<RatingObjectWidget2> ratingList;
   late int selectedValue = widget.initialValue > 5 ? 5 : widget.initialValue;
 
   @override
@@ -79,7 +81,7 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
 
     for (var index = 0; index < widget.ratingLength; index++) {
       ratingList.add(
-        RatingObject(
+        RatingObjectWidget2(
           isSelected: index <= selectedValue - 1,
           fullWidget: widget.fullWidget,
           emptyWidget: widget.emptyWidget,
@@ -92,8 +94,9 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             for (var i = selectedValue;
                 isIncreasing ? i <= rating : i >= rating;
                 isIncreasing ? i++ : i--) {
-              if (widget.cascadeAnimation)
+              if (widget.cascadeAnimation) {
                 await Future.delayed(const Duration(milliseconds: 50));
+              }
 
               selectedValue = i;
 

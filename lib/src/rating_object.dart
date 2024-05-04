@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:simple_animated_rating_bar/src/widgets/widget_by_type.dart';
 import '../utils/arb_type.dart';
 
-class RatingObject extends StatefulWidget {
-  const RatingObject({
+class RatingObjectWidget2 extends StatefulWidget {
+  const RatingObjectWidget2({
     final Key? key,
     this.isSelected = false,
     required this.emptyWidget,
@@ -24,105 +23,70 @@ class RatingObject extends StatefulWidget {
   final int index;
 
   @override
-  State<RatingObject> createState() => RatingObjectState();
+  State<RatingObjectWidget2> createState() => RatingObjectWidget2State();
 }
 
-class RatingObjectState extends State<RatingObject>
+class RatingObjectWidget2State extends State<RatingObjectWidget2>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animate;
-  late double _scale;
+  late AnimationController _animationController;
   bool played = false;
 
   @override
   void initState() {
-    _animate = AnimationController(
+    _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 200),
-      upperBound: 0.5,
-    )..addListener(() {
-        setState(() {});
-      });
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 100),
+    );
+
     super.initState();
   }
 
   @override
   void dispose() {
-    _animate.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(final BuildContext context) {
-    _scale = _decideScaleIntensity();
-    final sineValue = _decideShakeIntensity();
-    final angle = _animate.value * widget.animationItensity / 2;
-    Widget? ratingObject;
-
     _onSelected();
 
-    if (widget.animationType == ARBAnimationType.none) {
-      ratingObject = widget.isSelected ? widget.fullWidget : widget.emptyWidget;
-    }
+    Widget? ratingObject2;
+    Widget selectedWidget =
+        widget.isSelected ? widget.fullWidget : widget.emptyWidget;
 
-    if (widget.animationType == ARBAnimationType.shake) {
-      ratingObject = Transform.translate(
-        offset: Offset(sineValue * 4, 0),
-        child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
-      );
-    }
-
-    if (widget.animationType == ARBAnimationType.rotate) {
-      ratingObject = Transform.rotate(
-        angle: angle,
-        child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
-      );
-    }
-
-    if (widget.animationType == ARBAnimationType.bounceDiagonally) {
-      ratingObject = Transform(
-        transform: Matrix4.diagonal3Values(_scale, _scale, 1),
-        child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
-      );
-    }
-
-    if (widget.animationType == ARBAnimationType.bounce) {
-      ratingObject = Transform.scale(
-        scale: _scale,
-        child: widget.isSelected ? widget.fullWidget : widget.emptyWidget,
-      );
-    }
+    ratingObject2 = WidgetByType(
+      selectedWidget: selectedWidget,
+      type: widget.animationType,
+      controller: _animationController,
+    );
 
     return GestureDetector(
       onTap: () {
         widget.callback(widget.index + 1);
       },
-      child: ratingObject,
+      child: ratingObject2,
     );
   }
 
-  void _onSelected() {
+  Future<void> _onSelected() async {
     if (!widget.isSelected) {
       played = false;
     }
 
     if (widget.isSelected && !played) {
       played = true;
-      _animate.forward();
-      Future.delayed(const Duration(milliseconds: 100), () {
-        _animate.reverse();
-      });
+
+      await _animationController.forward().then(
+            (value) => _animationController.reverse(),
+          );
+
+      // this makes the animation be interrupted in the middle and then reversed
+      // _animationController.forward();
+      // await Future.delayed(const Duration(milliseconds: 100), () async {
+      //   _animationController.reverse();
+      // });
     }
-  }
-
-  double _decideScaleIntensity() {
-    if (widget.animationType == ARBAnimationType.bounceDiagonally) {
-      return 1 - _animate.value * (widget.animationItensity / 2.5) * -1;
-    }
-
-    return 1 - _animate.value * (widget.animationItensity * -1);
-  }
-
-  double _decideShakeIntensity() {
-    return sin((widget.animationItensity + 2) * pi * _animate.value);
   }
 }

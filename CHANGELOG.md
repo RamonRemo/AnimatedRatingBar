@@ -1,28 +1,22 @@
-## 0.0.1
+# 1.0.1
+* Fixed cascade animation
 
-* First Release
+# 1.0.0
+* Removed slider function
+* Removed rowheight parameter
+* Added ratingLength parameter
+* Fixed bug on the first rating object
 
-## 0.0.6
+# 0.0.8
+* Added mainAxisAlignment
+* Added initialValue
 
-* README added
+# 0.0.7
+* Added cascade animation
+* Updated README
 
-## 0.0.7
+# 0.0.6
+* Added README
 
-* Cascade animation added
-* README updated
-
-## 0.0.8
-
-* mainAxisAlignment add
-* initialValue added
-
-## 1.0.0
-
-* Slider function removed
-* rowheight parameter removed
-* ratingLength parameter added
-* bug on first ratingobject fixed
-
-## 1.0.1
-
-* fixed cascade
+# 0.0.1
+* First release
