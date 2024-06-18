@@ -2,8 +2,6 @@ import 'package:example/pages/default_example.dart';
 import 'package:example/pages/first_example.dart';
 import 'package:example/pages/steven_example.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_animated_rating_bar/simple_animated_rating_bar.dart';
-import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 
 void main() {
   runApp(

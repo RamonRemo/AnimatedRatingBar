@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_animated_rating_bar/src/widgets/widget_by_type.dart';
 import '../utils/arb_type.dart';
 
-class RatingObjectWidget2 extends StatefulWidget {
-  const RatingObjectWidget2({
+class RatingObject extends StatefulWidget {
+  const RatingObject({
     final Key? key,
     this.isSelected = false,
     required this.emptyWidget,
@@ -12,6 +12,9 @@ class RatingObjectWidget2 extends StatefulWidget {
     required this.animationItensity,
     required this.callback,
     required this.index,
+    this.curve,
+    this.duration,
+    this.reverseDuration,
   }) : super(key: key);
 
   final bool isSelected;
@@ -21,12 +24,15 @@ class RatingObjectWidget2 extends StatefulWidget {
   final double animationItensity;
   final Function(int) callback;
   final int index;
+  final Curve? curve;
+  final Duration? duration;
+  final Duration? reverseDuration;
 
   @override
-  State<RatingObjectWidget2> createState() => RatingObjectWidget2State();
+  State<RatingObject> createState() => RatingObjectState();
 }
 
-class RatingObjectWidget2State extends State<RatingObjectWidget2>
+class RatingObjectState extends State<RatingObject>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   bool played = false;
@@ -35,8 +41,8 @@ class RatingObjectWidget2State extends State<RatingObjectWidget2>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 100),
-      reverseDuration: const Duration(milliseconds: 100),
+      duration: widget.duration,
+      reverseDuration: widget.reverseDuration ?? widget.duration,
     );
 
     super.initState();
@@ -52,21 +58,22 @@ class RatingObjectWidget2State extends State<RatingObjectWidget2>
   Widget build(final BuildContext context) {
     _onSelected();
 
-    Widget? ratingObject2;
+    Widget? ratingObject;
     Widget selectedWidget =
         widget.isSelected ? widget.fullWidget : widget.emptyWidget;
 
-    ratingObject2 = WidgetByType(
+    ratingObject = WidgetByType(
       selectedWidget: selectedWidget,
       type: widget.animationType,
       controller: _animationController,
+      curve: widget.curve,
     );
 
     return GestureDetector(
       onTap: () {
         widget.callback(widget.index + 1);
       },
-      child: ratingObject2,
+      child: ratingObject,
     );
   }
 

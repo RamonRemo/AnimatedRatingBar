@@ -11,12 +11,14 @@ class WidgetByType extends StatelessWidget {
   final Widget selectedWidget;
   final ARBAnimationType type;
   final AnimationController controller;
+  final Curve? curve;
 
   const WidgetByType({
     super.key,
     required this.selectedWidget,
     required this.type,
     required this.controller,
+    this.curve,
   });
 
   @override
@@ -29,36 +31,42 @@ class WidgetByType extends StatelessWidget {
       case ARBAnimationType.diagonallyDown:
         return DiagonallyDown(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 
       case ARBAnimationType.diagonallyUp:
         return DiagonallyUp(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 
       case ARBAnimationType.jump:
         return Jump(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 
       case ARBAnimationType.shake:
         return Shake(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 
       case ARBAnimationType.rotate:
         return Rotate(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 
       case ARBAnimationType.bounce:
         return Scale(
           controller: controller,
+          curve: curve,
           child: selectedWidget,
         );
 

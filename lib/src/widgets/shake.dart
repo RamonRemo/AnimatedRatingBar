@@ -1,15 +1,14 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:simple_animated_rating_bar/src/widgets/rotate.dart';
-import 'package:simple_animated_rating_bar/src/widgets/scale.dart';
 
 class Shake extends AnimatedWidget {
   final AnimationController controller;
+  final Curve? curve;
+  final Widget child;
 
   Shake({
     required this.controller,
     required this.child,
+    this.curve,
     Key? key,
   }) : super(
           key: key,
@@ -19,12 +18,10 @@ class Shake extends AnimatedWidget {
           ).animate(
             CurvedAnimation(
               parent: controller,
-              curve: Curves.easeInSine,
+              curve: curve ?? Curves.easeInSine,
             ),
           ),
         );
-
-  final Widget child;
 
   Animation<double> get _translation => listenable as Animation<double>;
 

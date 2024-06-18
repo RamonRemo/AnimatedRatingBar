@@ -4,10 +4,13 @@ import 'package:simple_animated_rating_bar/src/widgets/scale.dart';
 
 class DiagonallyUp extends AnimatedWidget {
   final Animation<double> controller;
+  final Curve? curve;
+  final Widget child;
 
   DiagonallyUp({
     required this.controller,
     required this.child,
+    this.curve,
     Key? key,
   }) : super(
           key: key,
@@ -17,12 +20,10 @@ class DiagonallyUp extends AnimatedWidget {
           ).animate(
             CurvedAnimation(
               parent: controller,
-              curve: Curves.easeIn,
+              curve: curve ?? Curves.easeIn,
             ),
           ),
         );
-
-  final Widget child;
 
   Animation<Offset> get _translation => listenable as Animation<Offset>;
 

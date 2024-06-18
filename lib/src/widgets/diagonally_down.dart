@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class DiagonallyDown extends AnimatedWidget {
   final Animation<double> controller;
+  final Widget child;
+  final Curve? curve;
 
   DiagonallyDown({
     required this.controller,
     required this.child,
+    this.curve,
     Key? key,
   }) : super(
           key: key,
@@ -15,12 +18,10 @@ class DiagonallyDown extends AnimatedWidget {
           ).animate(
             CurvedAnimation(
               parent: controller,
-              curve: Curves.easeIn,
+              curve: curve ?? Curves.easeIn,
             ),
           ),
         );
-
-  final Widget child;
 
   Animation<Offset> get _translation => listenable as Animation<Offset>;
 

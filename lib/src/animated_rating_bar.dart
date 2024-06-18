@@ -46,7 +46,36 @@ class AnimatedRatingBar extends StatefulWidget {
   /// Default is 0.
   final int initialValue;
 
+  /// You can choose your curve from the [Curves] class.
+  /// Default is [Curves.easeIn].
+  ///
+  /// Some of the curves may required duration adjusts.
+  final Curve? curve;
+
+  /// How the children should be placed along the main axis in a flex layout.
+  ///
+  /// See also:
+  ///
+  ///  * [Column], [Row], and [Flex], the flex widgets.
+  ///  * [RenderFlex], the flex render object.
   final MainAxisAlignment mainAxisAlignment;
+
+  /// The duration of the animation going forward.
+  /// To the reverse duration use [reverseDuration], if [reverseDuration] is not given, we will use [duration].
+  /// Default is [Duration(milliseconds: 100)]
+  ///
+  /// More than 200 milliseconds may be too slow.
+  final Duration duration;
+
+  /// The duration of the animation going back.
+  /// If [reverseDuration] is not given, we will use [duration].
+  final Duration? reverseDuration;
+
+  /// The duration of the cascade animation.
+  /// Defines how fast the widgets changes.
+  ///
+  /// Default is [Duration(milliseconds: 50)]
+  final Duration? cascadeDuration;
 
   const AnimatedRatingBar({
     super.key,
@@ -59,6 +88,10 @@ class AnimatedRatingBar extends StatefulWidget {
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.initialValue = 0,
     this.ratingLength = 5,
+    this.curve,
+    this.duration = const Duration(milliseconds: 100),
+    this.reverseDuration,
+    this.cascadeDuration,
   });
 
   @override
@@ -66,7 +99,7 @@ class AnimatedRatingBar extends StatefulWidget {
 }
 
 class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
-  late List<RatingObjectWidget2> ratingList;
+  late List<RatingObject> ratingList;
   late int selectedValue = widget.initialValue > 5 ? 5 : widget.initialValue;
 
   @override
@@ -81,13 +114,16 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
 
     for (var index = 0; index < widget.ratingLength; index++) {
       ratingList.add(
-        RatingObjectWidget2(
+        RatingObject(
           isSelected: index <= selectedValue - 1,
           fullWidget: widget.fullWidget,
           emptyWidget: widget.emptyWidget,
           animationItensity: widget.animationItensity,
           animationType: widget.animationType,
           index: index,
+          curve: widget.curve,
+          duration: widget.duration,
+          reverseDuration: widget.reverseDuration,
           callback: (final rating) async {
             final isIncreasing = selectedValue < rating;
 
@@ -95,7 +131,12 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
                 isIncreasing ? i <= rating : i >= rating;
                 isIncreasing ? i++ : i--) {
               if (widget.cascadeAnimation) {
-                await Future.delayed(const Duration(milliseconds: 50));
+                await Future.delayed(
+                  Duration(
+                    milliseconds: widget.cascadeDuration?.inMilliseconds ?? 50,
+                  ),
+                );
+                // widget.duration.inMilliseconds
               }
 
               selectedValue = i;

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Scale extends AnimatedWidget {
+  final Widget child;
+  final Curve? curve;
+
   Scale({
     required Animation<double> controller,
     required this.child,
+    this.curve,
     Key? key,
   }) : super(
           key: key,
@@ -11,11 +15,12 @@ class Scale extends AnimatedWidget {
             begin: 1,
             end: 1.4,
           ).animate(
-            CurvedAnimation(parent: controller, curve: Curves.easeIn),
+            CurvedAnimation(
+              parent: controller,
+              curve: curve ?? Curves.easeIn,
+            ),
           ),
         );
-
-  final Widget child;
 
   Animation<double> get _translation => listenable as Animation<double>;
 

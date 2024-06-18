@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:simple_animated_rating_bar/src/widgets/rotate.dart';
-import 'package:simple_animated_rating_bar/src/widgets/scale.dart';
 
 class Jump extends AnimatedWidget {
   final Animation<double> controller;
+  final Widget child;
+  final Curve? curve;
 
   Jump({
     required this.controller,
     required this.child,
+    this.curve,
     Key? key,
   }) : super(
           key: key,
@@ -17,12 +18,10 @@ class Jump extends AnimatedWidget {
           ).animate(
             CurvedAnimation(
               parent: controller,
-              curve: Curves.easeIn,
+              curve: curve ?? Curves.easeIn,
             ),
           ),
         );
-
-  final Widget child;
 
   Animation<Offset> get _translation => listenable as Animation<Offset>;
 
