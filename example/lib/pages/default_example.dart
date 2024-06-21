@@ -15,19 +15,18 @@ class DefaultExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            animationItensity: 4,
-            animationType: ARBAnimationType.shake,
+            animationType: ARBAnimationType.rotate,
             onRatingChanged: (value) {
               int rating = value;
             },
             emptyWidget: const Icon(
               Icons.star_border_rounded,
-              size: 48,
+              size: 60,
               color: Colors.white,
             ),
             fullWidget: const Icon(
               Icons.star_rounded,
-              size: 48,
+              size: 60,
               color: Colors.white,
             ),
           ),

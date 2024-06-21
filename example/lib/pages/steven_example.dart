@@ -15,10 +15,12 @@ class StevenUniverseExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            curve: Curves.bounceIn,
+            // curve: Curves.bounceIn,
             animationType: ARBAnimationType.rotate,
-            duration: Duration(milliseconds: 300),
-            reverseDuration: Duration(milliseconds: 600),
+            // duration: const Duration(milliseconds: 200),
+            // cascadeAnimation: false,
+            // reverseDuration: const Duration(milliseconds: 200),
+            // cascadeDuration: const Duration(milliseconds: 600),
             onRatingChanged: (value) {
               // print(value);
             },

@@ -5,6 +5,7 @@ library simple_animated_rating_bar;
 import 'package:simple_animated_rating_bar/src/rating_object.dart';
 import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 class AnimatedRatingBar extends StatefulWidget {
   /// Widget to display when the rating is unselected.
@@ -27,8 +28,10 @@ class AnimatedRatingBar extends StatefulWidget {
   final ARBAnimationType animationType;
 
   /// Intensity of the animation. Arbitrarily decided by me.
+  /// 1 is 100% of the normal animation, 
+  /// examepl: if you want to increase it by 25%, use 1.25
   ///
-  /// Default is 2.
+  /// Default is 1.
   final double animationItensity;
 
   /// Make the ratings to be animated one at a time.
@@ -83,7 +86,7 @@ class AnimatedRatingBar extends StatefulWidget {
     required this.emptyWidget,
     required this.fullWidget,
     this.animationType = ARBAnimationType.bounce,
-    this.animationItensity = 2,
+    this.animationItensity = 3,
     this.cascadeAnimation = true,
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.initialValue = 0,
@@ -110,6 +113,7 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
 
   @override
   Widget build(final BuildContext context) {
+    timeDilation = 1;
     ratingList = [];
 
     for (var index = 0; index < widget.ratingLength; index++) {
@@ -130,28 +134,11 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
             for (var i = selectedValue;
                 isIncreasing ? i <= rating : i >= rating;
                 isIncreasing ? i++ : i--) {
-              if (widget.cascadeAnimation) {
-                await Future.delayed(
-                  Duration(
-                    milliseconds: widget.cascadeDuration?.inMilliseconds ?? 50,
-                  ),
-                );
-                // widget.duration.inMilliseconds
-              }
+              await cascadeMethod();
 
               selectedValue = i;
 
-              if (widget.cascadeAnimation) {
-                setState(() {
-                  _updateRating();
-                });
-              }
-            }
-
-            if (!widget.cascadeAnimation) {
-              setState(() {
-                _updateRating();
-              });
+              _updateRating();
             }
           },
         ),
@@ -185,8 +172,20 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
     );
   }
 
+  Future<void> cascadeMethod() async {
+    if (widget.cascadeAnimation) {
+      await Future.delayed(
+        Duration(
+          milliseconds: widget.cascadeDuration?.inMilliseconds ?? 50,
+        ),
+      );
+    }
+  }
+
   void _updateRating() {
-    widget.onRatingChanged?.call(rating);
+    setState(() {
+      widget.onRatingChanged?.call(rating);
+    });
   }
 
   int get rating => selectedValue;

@@ -62,11 +62,40 @@ class RatingObjectState extends State<RatingObject>
     Widget selectedWidget =
         widget.isSelected ? widget.fullWidget : widget.emptyWidget;
 
+    Widget fadeTransition = FadeTransition(
+      opacity: Tween<double>(
+        begin: 0,
+        end: 1,
+      ).animate(
+        ReverseAnimation(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeIn,
+          ),
+        ),
+      ),
+      child: selectedWidget,
+    );
+
+    Widget slideTransition = SlideTransition(
+      position: Tween<Offset>(
+        begin: const Offset(0, 0),
+        end: const Offset(0.15, -0.15),
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: Curves.easeIn,
+        ),
+      ),
+      child: selectedWidget,
+    );
+
     ratingObject = WidgetByType(
       selectedWidget: selectedWidget,
       type: widget.animationType,
       controller: _animationController,
       curve: widget.curve,
+      animationItensity: widget.animationItensity,
     );
 
     return GestureDetector(

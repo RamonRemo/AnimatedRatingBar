@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:simple_animated_rating_bar/src/widgets/rotate.dart';
-import 'package:simple_animated_rating_bar/src/widgets/scale.dart';
 
 class DiagonallyUp extends AnimatedWidget {
   final Animation<double> controller;
   final Curve? curve;
   final Widget child;
+  final double animationItensity;
 
   DiagonallyUp({
     required this.controller,
     required this.child,
+    required this.animationItensity,
     this.curve,
     Key? key,
   }) : super(
@@ -30,7 +30,7 @@ class DiagonallyUp extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     return FractionalTranslation(
-      translation: _translation.value,
+      translation: _translation.value * animationItensity,
       child: child,
     );
   }

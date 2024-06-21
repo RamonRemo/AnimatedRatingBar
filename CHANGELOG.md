@@ -1,3 +1,10 @@
+# 2.0.0
+* added curves
+* added duration,reverseDuration and cascadeDuration
+* added new animations types, diagonallyDown, diagonallyUp and jump
+* changes in animationIntensity
+
+
 # 1.0.1
 * Fixed cascade animation
 

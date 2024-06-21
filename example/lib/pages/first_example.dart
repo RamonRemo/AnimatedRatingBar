@@ -15,8 +15,8 @@ class FirstExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            animationItensity: 1,
-            animationType: ARBAnimationType.shake,
+            // animationItensity: 1,
+            animationType: ARBAnimationType.bounce,
             onRatingChanged: (value) {
               int rating = value;
             },

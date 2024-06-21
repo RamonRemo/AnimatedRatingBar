@@ -4,10 +4,12 @@ class DiagonallyDown extends AnimatedWidget {
   final Animation<double> controller;
   final Widget child;
   final Curve? curve;
+  final double animationItensity;
 
   DiagonallyDown({
     required this.controller,
     required this.child,
+    required this.animationItensity,
     this.curve,
     Key? key,
   }) : super(
@@ -28,7 +30,7 @@ class DiagonallyDown extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     return FractionalTranslation(
-      translation: _translation.value,
+      translation: _translation.value * animationItensity,
       child: child,
     );
   }

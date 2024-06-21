@@ -12,12 +12,14 @@ class WidgetByType extends StatelessWidget {
   final ARBAnimationType type;
   final AnimationController controller;
   final Curve? curve;
+  final double animationItensity;
 
   const WidgetByType({
     super.key,
     required this.selectedWidget,
     required this.type,
     required this.controller,
+    required this.animationItensity,
     this.curve,
   });
 
@@ -32,6 +34,7 @@ class WidgetByType extends StatelessWidget {
         return DiagonallyDown(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
@@ -39,6 +42,7 @@ class WidgetByType extends StatelessWidget {
         return DiagonallyUp(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
@@ -46,6 +50,7 @@ class WidgetByType extends StatelessWidget {
         return Jump(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
@@ -53,6 +58,7 @@ class WidgetByType extends StatelessWidget {
         return Shake(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
@@ -60,6 +66,7 @@ class WidgetByType extends StatelessWidget {
         return Rotate(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
@@ -67,6 +74,7 @@ class WidgetByType extends StatelessWidget {
         return Scale(
           controller: controller,
           curve: curve,
+          animationItensity: animationItensity,
           child: selectedWidget,
         );
 
