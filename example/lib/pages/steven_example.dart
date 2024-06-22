@@ -3,8 +3,11 @@ import 'package:simple_animated_rating_bar/utils/arb_type.dart';
 import 'package:flutter/material.dart';
 
 class StevenUniverseExample extends StatelessWidget {
+  final ARBAnimationType animationType;
+
   const StevenUniverseExample({
     super.key,
+    this.animationType = ARBAnimationType.bounce,
   });
 
   @override
@@ -16,7 +19,7 @@ class StevenUniverseExample extends StatelessWidget {
         children: [
           AnimatedRatingBar(
             // curve: Curves.bounceIn,
-            animationType: ARBAnimationType.rotate,
+            animationType: animationType,
             // duration: const Duration(milliseconds: 200),
             // cascadeAnimation: false,
             // reverseDuration: const Duration(milliseconds: 200),

@@ -15,7 +15,7 @@ class DefaultExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            animationType: ARBAnimationType.rotate,
+            animationType: ARBAnimationType.nodLeft,
             onRatingChanged: (value) {
               int rating = value;
             },

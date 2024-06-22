@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_animated_rating_bar/src/widgets/diagonally_down.dart';
 import 'package:simple_animated_rating_bar/src/widgets/diagonally_up.dart';
 import 'package:simple_animated_rating_bar/src/widgets/jump.dart';
+import 'package:simple_animated_rating_bar/src/widgets/nodLeft.dart';
+import 'package:simple_animated_rating_bar/src/widgets/nodRight.dart';
 import 'package:simple_animated_rating_bar/src/widgets/rotate.dart';
 import 'package:simple_animated_rating_bar/src/widgets/scale.dart';
 import 'package:simple_animated_rating_bar/src/widgets/shake.dart';
@@ -68,6 +70,44 @@ class WidgetByType extends StatelessWidget {
           curve: curve,
           animationItensity: animationItensity,
           child: selectedWidget,
+        );
+
+      case ARBAnimationType.nodRight:
+        return NodRight(
+          controller: controller,
+          curve: curve,
+          animationItensity: animationItensity,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0),
+              end: const Offset(0.15, -0.15),
+            ).animate(
+              CurvedAnimation(
+                parent: controller,
+                curve: curve ?? Curves.easeIn,
+              ),
+            ),
+            child: selectedWidget,
+          ),
+        );
+
+      case ARBAnimationType.nodLeft:
+        return NodLeft(
+          controller: controller,
+          curve: curve,
+          animationItensity: animationItensity,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0),
+              end: const Offset(-0.15, -0.15),
+            ).animate(
+              CurvedAnimation(
+                parent: controller,
+                curve: curve ?? Curves.easeIn,
+              ),
+            ),
+            child: selectedWidget,
+          ),
         );
 
       case ARBAnimationType.bounce:

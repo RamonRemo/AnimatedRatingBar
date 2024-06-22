@@ -5,5 +5,7 @@ enum ARBAnimationType {
   jump,
   diagonallyUp,
   diagonallyDown,
+  nodRight,
+  nodLeft,
   none,
 }

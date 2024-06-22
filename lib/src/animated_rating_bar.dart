@@ -28,7 +28,7 @@ class AnimatedRatingBar extends StatefulWidget {
   final ARBAnimationType animationType;
 
   /// Intensity of the animation. Arbitrarily decided by me.
-  /// 1 is 100% of the normal animation, 
+  /// 1 is 100% of the normal animation,
   /// examepl: if you want to increase it by 25%, use 1.25
   ///
   /// Default is 1.
@@ -86,7 +86,7 @@ class AnimatedRatingBar extends StatefulWidget {
     required this.emptyWidget,
     required this.fullWidget,
     this.animationType = ARBAnimationType.bounce,
-    this.animationItensity = 3,
+    this.animationItensity = 1,
     this.cascadeAnimation = true,
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.initialValue = 0,
