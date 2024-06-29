@@ -18,8 +18,8 @@ A simple animated rating bar to help you implement a rating system in your app.
 - :star: Change between 8 types of animation (bounce, shake, rotate, jump and others).
 - :dizzy: Choose a curve for the animation.
 - :muscle: Adjust the intensity of the animations.
-- :full_moon_with_face: Use any widget as rating indicator.
-- :1234: You choose how many rating objects will be.
+- :basketball: Use any widget as rating indicator.
+- :books: You choose how many rating objects will be.
 - :point_down: Select a rating by tapping.
 - :rainbow: Includes a toggleable Cascade-Animation.
 - :clock10: Choose the duration of everything.
