@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class Rotate extends AnimatedWidget {
   final Widget child;

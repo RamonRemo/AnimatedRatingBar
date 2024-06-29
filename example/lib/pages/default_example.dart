@@ -17,7 +17,6 @@ class DefaultExample extends StatelessWidget {
           AnimatedRatingBar(
             animationType: ARBAnimationType.nodLeft,
             onRatingChanged: (value) {
-              int rating = value;
             },
             emptyWidget: const Icon(
               Icons.star_border_rounded,

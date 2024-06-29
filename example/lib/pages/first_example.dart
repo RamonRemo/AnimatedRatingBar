@@ -18,7 +18,6 @@ class FirstExample extends StatelessWidget {
             // animationItensity: 1,
             animationType: ARBAnimationType.nodRight,
             onRatingChanged: (value) {
-              int rating = value;
             },
             emptyWidget: const Icon(
               Icons.close_rounded,

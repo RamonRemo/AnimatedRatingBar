@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class NodLeft extends AnimatedWidget {
   final Widget child;
