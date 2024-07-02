@@ -26,6 +26,5 @@ flutter:
 
   assets:
     - assets/
-    - assets/steven.jpeg
     - assets/steven1.png
     - assets/steven2.png

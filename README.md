@@ -11,9 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-<div style="text-align: center;">
-  <img src="example/assets/mario_large.gif" alt="DEMO0" />
-</div>
+![DEMO0](example/assets/mario_large.gif)
 
 A simple animated rating bar to help you implement a rating system in your app.
 

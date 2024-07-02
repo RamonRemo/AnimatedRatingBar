@@ -1,9 +1,12 @@
+# 2.0.1
+* my coolest gif didnt work, trying to fix!
+
 # 2.0.0
 * added curves
 * added duration,reverseDuration and cascadeDuration
 * added new animations types, diagonally, nod and jump
 * changes in animationIntensity
-
+* shake animation modified
 
 # 1.0.1
 * Fixed cascade animation

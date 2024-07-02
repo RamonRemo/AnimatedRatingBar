@@ -9,8 +9,7 @@ class Shake extends AnimatedWidget {
   static final tweenSequence = TweenSequence(
     <TweenSequenceItem<double>>[
       TweenSequenceItem<double>(
-        tween: Tween<double>(begin: 0, end: 5)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(begin: 0, end: 5),
         weight: 1,
       ),
       TweenSequenceItem<double>(
@@ -30,7 +29,9 @@ class Shake extends AnimatedWidget {
             key: key,
             listenable: tweenSequence.animate(
               CurvedAnimation(
-                  parent: controller, curve: curve ?? Curves.easeInSine),
+                parent: controller,
+                curve: curve ?? Curves.easeInSine,
+              ),
             ));
 
   Animation<double> get _translation => listenable as Animation<double>;
