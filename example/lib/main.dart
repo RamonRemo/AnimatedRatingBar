@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:example/pages/default_example.dart';
 import 'package:example/pages/first_example.dart';
 import 'package:example/pages/mario_ex.dart';
@@ -18,19 +20,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       // backgroundColor: Color(0xFFFE5D6C),
-      backgroundColor: Color.fromRGBO(161, 160, 255, 1),
+      // backgroundColor: Color.fromRGBO(161, 160, 255, 1),
+      backgroundColor: Colors.blueGrey[600],
 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // StevenUniverseExample(
-          //   animationType: ARBAnimationType.rotate,
+          //   animationType: ARBAnimationType.shake,
           // ),
-          // FirstExample(),
+          FirstExample(),
+          // MarioExample(),
           // DefaultExample(),
-          MarioExample(),
         ],
       ),
     );

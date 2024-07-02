@@ -16,9 +16,8 @@ class FirstExample extends StatelessWidget {
         children: [
           AnimatedRatingBar(
             // animationItensity: 1,
-            animationType: ARBAnimationType.nodRight,
-            onRatingChanged: (value) {
-            },
+            animationType: ARBAnimationType.bounce,
+            onRatingChanged: (value) {},
             emptyWidget: const Icon(
               Icons.close_rounded,
               size: 48,

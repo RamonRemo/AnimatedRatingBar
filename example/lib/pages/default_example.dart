@@ -15,9 +15,11 @@ class DefaultExample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRatingBar(
-            animationType: ARBAnimationType.nodLeft,
-            onRatingChanged: (value) {
-            },
+            animationType: ARBAnimationType.shake,
+            // cascadeDuration: Duration(milliseconds: 50),
+            // duration: Duration(milliseconds: 50),
+            // animationItensity: 2,
+            onRatingChanged: (value) {},
             emptyWidget: const Icon(
               Icons.star_border_rounded,
               size: 60,

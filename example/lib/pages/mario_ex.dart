@@ -7,7 +7,7 @@ class MarioExample extends StatelessWidget {
 
   const MarioExample({
     super.key,
-    this.animationType = ARBAnimationType.jump,
+    this.animationType = ARBAnimationType.shake,
   });
 
   @override
@@ -17,24 +17,11 @@ class MarioExample extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'simple_animated_rating_bar',
-            style: TextStyle(
-                fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 150,
-          ),
           Container(
-            constraints: BoxConstraints(maxWidth: 400),
+            constraints: const BoxConstraints(maxWidth: 400),
             child: AnimatedRatingBar(
               // curve: Curves.bounceIn,
               animationType: animationType,
-              cascadeDuration: const Duration(milliseconds: 75),
-              // duration: const Duration(milliseconds: 200),
-              // cascadeAnimation: false,
-              // reverseDuration: const Duration(milliseconds: 200),
-              // cascadeDuration: const Duration(milliseconds: 800),
               onRatingChanged: (value) {
                 // print(value);
               },
@@ -54,9 +41,6 @@ class MarioExample extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-          )
         ],
       ),
     );
