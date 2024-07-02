@@ -10,7 +10,10 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
-![DEMO0](example/assets/mario_large.gif) 
+
+<div style="text-align: center;">
+  <img src="example/assets/mario_large.gif" alt="DEMO0" />
+</div>
 
 A simple animated rating bar to help you implement a rating system in your app.
 
@@ -44,12 +47,12 @@ A simple animated rating bar to help you implement a rating system in your app.
         ),
     ),
 ```
-![DEMO1](example/assets/rotate.gif) 
 
+![DEMO1](example/assets/rotate.gif)
 
 2. Use the shake animation:
 
-![DEMO2](example/assets/shake.gif) 
+![DEMO2](example/assets/shake.gif)
 
 3. Or the bounce animation:
 
@@ -76,7 +79,6 @@ A simple animated rating bar to help you implement a rating system in your app.
         },
     ),
 ```
-
 
 ## Additional information
 
