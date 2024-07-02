@@ -10,6 +10,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
+![DEMO0](example/assets/mario_large.gif) 
 
 A simple animated rating bar to help you implement a rating system in your app.
 

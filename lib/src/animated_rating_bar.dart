@@ -77,7 +77,7 @@ class AnimatedRatingBar extends StatefulWidget {
   /// The duration of the cascade animation.
   /// Defines how fast the widgets changes.
   ///
-  /// Default is [Duration(milliseconds: 50)]
+  /// Default is [Duration(milliseconds: 75)]
   final Duration? cascadeDuration;
 
   const AnimatedRatingBar({
@@ -176,7 +176,7 @@ class _AnimatedRatingBarState extends State<AnimatedRatingBar> {
     if (widget.cascadeAnimation) {
       await Future.delayed(
         Duration(
-          milliseconds: widget.cascadeDuration?.inMilliseconds ?? 50,
+          milliseconds: widget.cascadeDuration?.inMilliseconds ?? 75,
         ),
       );
     }

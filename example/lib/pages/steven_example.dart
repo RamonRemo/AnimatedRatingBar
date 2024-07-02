@@ -22,6 +22,8 @@ class StevenUniverseExample extends StatelessWidget {
             animationType: animationType,
             // duration: const Duration(milliseconds: 200),
             // cascadeAnimation: false,
+            // cascadeDuration: const Duration(milliseconds: 75),
+
             // reverseDuration: const Duration(milliseconds: 200),
             // cascadeDuration: const Duration(milliseconds: 600),
             onRatingChanged: (value) {

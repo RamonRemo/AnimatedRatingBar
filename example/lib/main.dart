@@ -1,5 +1,6 @@
 import 'package:example/pages/default_example.dart';
 import 'package:example/pages/first_example.dart';
+import 'package:example/pages/mario_ex.dart';
 import 'package:example/pages/steven_example.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animated_rating_bar/utils/arb_type.dart';
@@ -18,18 +19,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color(0xFFFE5D6C),
+      // backgroundColor: Color(0xFFFE5D6C),
+      backgroundColor: Color.fromRGBO(161, 160, 255, 1),
+
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          StevenUniverseExample(
-            animationType: ARBAnimationType.nodRight,
-          ),
-          StevenUniverseExample(
-            animationType: ARBAnimationType.nodLeft,
-          ),
-          FirstExample(),
-          DefaultExample(),
+          // StevenUniverseExample(
+          //   animationType: ARBAnimationType.rotate,
+          // ),
+          // FirstExample(),
+          // DefaultExample(),
+          MarioExample(),
         ],
       ),
     );
